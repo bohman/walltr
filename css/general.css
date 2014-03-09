@@ -1,0 +1,50 @@
+/* BASICS ---------------- */
+body {
+  background-color: #efefef;
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+}
+
+a {
+  color: #252525;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline-color: rgb(0, 0, 0);
+  outline-color: rgba(0, 0, 0, 0.6);
+}
+
+label {
+  
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  
+}
+
+input[type="submit"],
+button {
+  
+}
+
+[disabled] {
+  opacity: 0.7;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::selection {
+  background: #b3d4fc;
+  background: rgba(0, 0, 0, 0.2);
+}

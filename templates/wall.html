@@ -1,0 +1,16 @@
+<label for="text">Vad är på dina tankar?</label>
+<textarea id="text" ng-model="text"></textarea>
+<input type="submit" value="Posta" ng-click="addPost(text)">
+
+<div ng-repeat="post in posts | orderBy:'-timestamp'">
+  <span>{{users[post.user].name}}</span>
+  <div>{{post.text}}</div>
+
+  <div ng-repeat="comment in post.comments">
+    <span>{{users[comment.user].name}}</span>
+    <div>{{comment.text}}</div>
+  </div>
+
+  <textarea ng-model="comment"></textarea>
+  <input type="submit" value="Kommentera" ng-click="addComment(post, comment)">
+</div>

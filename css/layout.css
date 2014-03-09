@@ -1,0 +1,14 @@
+/* LAYOUT ---------------------
+   This file is where we build our layout. Set up grids, columns, whatever
+   here. Go wild. Get crazy. Put your responsiveness either here or in a separate
+   file depending on your project. */
+
+/*
+   Setting box model to something easier to work with. Works in IE8 and above - if your site must work
+   in IE7 and below you should remove this for better consistency.
+ */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
