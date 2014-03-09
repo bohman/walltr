@@ -54,7 +54,7 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', function($location, $
     var date = new Date();
 
     post.comments.push({
-      user: $scope.currentUser,
+      user: window.currentUser,
       timestamp: date.getTime(),
       text: text
     });
