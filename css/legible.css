@@ -1,0 +1,158 @@
+/*
+  WYSIWYG & POST TYPOGRAPHY ----------------------
+  Add the class wysiwyg to the parent element 
+  containing the wysiwyg output.
+*/
+
+.legible * {
+  line-height: 1.4em;
+}
+
+/* Spacing between elements */
+.legible h1,
+.legible h2,
+.legible h3,
+.legible h4,
+.legible h5,
+.legible h6,
+.legible div,
+.legible p,
+.legible ul,
+.legible ol,
+.legible blockquote,
+.legible pre code {
+  margin-top: 1em;
+}
+.legible h1 + p,
+.legible h2 + p,
+.legible h3 + p,
+.legible h4 + p,
+.legible h5 + p,
+.legible h6 + p,
+.legible h1 + div,
+.legible h2 + div,
+.legible h3 + div,
+.legible h4 + div,
+.legible h5 + div,
+.legible h6 + div,
+.legible h1 + ul,
+.legible h2 + ul,
+.legible h3 + ul,
+.legible h4 + ul,
+.legible h5 + ul,
+.legible h6 + ul,
+.legible h1 + ol,
+.legible h2 + ol,
+.legible h3 + ol,
+.legible h4 + ol,
+.legible h5 + ol,
+.legible h6 + ol,
+.legible h1:first-child,
+.legible h2:first-child,
+.legible h3:first-child,
+.legible h4:first-child,
+.legible h5:first-child,
+.legible h6:first-child,
+.legible div:first-child,
+.legible p:first-child,
+.legible ul:first-child,
+.legible ol:first-child,
+.legible blockquote:first-child,
+.legible pre:first-child code{
+  margin-top: 0;
+}
+
+/* Lists */
+.legible ul,
+.legible ol {
+  margin-left: 30px;
+  padding-left: 10px;
+}
+
+.legible ol {
+  list-style: decimal;
+}
+
+.legible ul {
+  list-style: circle;
+}
+
+.legible li {
+  margin-top: 0.3em;
+}
+.legible li:first-child {
+  margin-top: 0;
+}
+
+/* Headers */
+.legible h1,
+.legible h2,
+.legible h3,
+.legible h4,
+.legible h5,
+.legible h6 {
+  font-size: 2em;
+  margin-bottom: 0.3em;
+  line-height: 1em;
+}
+
+.legible h2 {
+  font-size: 1.8em;
+}
+
+.legible h3 {
+  font-size: 1.6em;
+}
+
+.legible h4 {
+  font-size: 1.4em;
+}
+
+.legible h5 {
+  font-size: 1.2em;
+}
+
+.legible h6 {
+  font-size: 1em;
+}
+
+/* Quotes, bolds, italics and other emphasis */
+.legible b,
+.legible strong {
+  font-weight: bold;
+}
+
+.legible i,
+.legible em {
+  font-style: italic;
+}
+
+.legible blockquote {
+  margin: 2em 3em;
+  font-size: 0.9em;
+  color: #777;
+}
+
+.legible code {
+  font-family: Courier, 'Courier New', monospace;
+  background: #efefef;
+}
+
+.legible pre code {
+  padding: 20px;
+  display: block;
+}
+
+/* Media */
+.legible img,
+.legible video,
+.legible param,
+.legible object,
+.legible embed,
+.legible iframe {
+  max-width: 100%; /* Media shouldn't break the layout */
+}
+
+.legible img {
+  height: auto; /* If the image width is resized, having this will ensure the height is resized in all browsers */
+}

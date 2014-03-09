@@ -12,3 +12,25 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.center {
+  width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  margin-bottom: 40px;
+}
+
+body > * {
+  margin-top: 40px;
+}
+
+.header {
+  margin-top: 0;
+}
+
+.post + .post {
+  margin-top: 80px;
+}

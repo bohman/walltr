@@ -14,10 +14,6 @@ walltrApp.config(['$routeProvider', function($routeProvider) {
 }]);
 
 walltrApp.controller('WalltrCtrl', ['$location', '$scope', function($location, $scope) {
-  if (!window.currentUser) {
-    $location.path('/login');
-  }
-
   $scope.users = {
     olof: {
       name: 'Olof',
@@ -36,6 +32,12 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', function($location, $
       email: 'adam.gerthel@oddhill.se'
     }
   };
+
+  if (!window.currentUser) {
+    $location.path('/login');
+  } else {
+    $scope.currentUserName = $scope.users[window.currentUser].name;
+  }
 
   $scope.posts = [];
 

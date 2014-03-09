@@ -1,16 +1,44 @@
-<label for="text">Vad är på dina tankar?</label>
-<textarea id="text" ng-model="text"></textarea>
-<input type="submit" value="Posta" ng-click="addPost(text)">
+<div class="header">
+  <h1 class="walltr-logo">WallTr</h1>
+  <h2 class="wall-name">Walltrs interna, well, wall</h2>
+  <p class="user-details"><img class="user-image" src="http://placekitten.com/50/50" alt="{{currentUserName}}">{{currentUserName}}</p>
+</div>
 
-<div ng-repeat="post in posts | orderBy:'-timestamp'">
-  <span>{{users[post.user].name}}</span>
-  <div>{{post.text}}</div>
+<div class="new-post center">
+  <textarea rows="1" placeholder="What's on your mind?" id="text" ng-model="text"></textarea>
+  <input type="submit" value="Post" ng-click="addPost(text)">
+</div>
 
-  <div ng-repeat="comment in post.comments">
-    <span>{{users[comment.user].name}}</span>
-    <div>{{comment.text}}</div>
+<div class="post center" ng-repeat="post in posts | orderBy:'-timestamp'">
+
+  <div class="post-parent">
+    <div class="post-meta">
+      <img class="user-image" src="http://placekitten.com/70/70" alt="{{users[post.user].name}}">
+      <p class="date">
+        <span class="month">May</span>
+        <span class="day">06</span>
+        <span class="year">2012</span>
+      </p>
+    </div>
+
+    <div class="post-content legible">
+      <p class="post-content-meta"><span class="user-name">{{users[post.user].name}}</span> 6 minutes ago</p>
+      <p>{{post.text}}</p>
+    </div>
   </div>
 
-  <textarea ng-model="comment"></textarea>
-  <input type="submit" value="Kommentera" ng-click="addComment(post, comment)">
+  <div class="post-comment" ng-repeat="comment in post.comments">
+    <div class="post-meta">
+      <img class="user-image" src="http://placekitten.com/g/70/70" alt="{{users[post.user].name}}">
+    </div>
+    <div class="post-content legible">
+      <p class="post-content-meta"><span class="user-name">{{users[comment.user].name}}</span> 6 minutes ago</p>
+      <p>{{comment.text}}</p>
+    </div>
+  </div>
+
+  <div class="new-post-comment">
+    <textarea rows="1" ng-model="comment"></textarea>
+    <input type="submit" value="Comment" ng-click="addComment(post, comment)">
+  </div>
 </div>

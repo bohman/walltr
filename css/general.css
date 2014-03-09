@@ -1,8 +1,9 @@
 /* BASICS ---------------- */
 body {
-  background-color: #efefef;
-  font-family: 'Times New Roman', serif;
-  font-size: 14px;
+  background-color: #f7f7f4;
+  color: #1d1d1d;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 12px;
 }
 
 a {
@@ -27,12 +28,30 @@ label {
 input[type="text"],
 input[type="password"],
 textarea {
-  
+  border: 1px solid #c2c8cc;
+  padding: 10px 20px;
+  line-height: 1.3em;
+  vertical-align: top;
 }
 
 input[type="submit"],
 button {
-  
+  padding: 10px 20px;
+  line-height: 1.3em;
+  border: 1px solid transparent;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #476263;
+  font-weight: 800;
+  vertical-align: top;
+}
+
+input[type="submit"]:hover,
+button:hover,
+input[type="submit"]:focus,
+button:focus {
+  background-color: #314344;
 }
 
 [disabled] {
@@ -47,4 +66,175 @@ button {
 ::selection {
   background: #b3d4fc;
   background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+  color: #1d1d1d;
+}
+
+::-moz-placeholder {
+  font-style: italic;
+  color: #1d1d1d;
+}
+
+:-ms-input-placeholder {
+  color: #1d1d1d;
+}
+
+.walltr-logo {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+
+/* LOGIN ---------------- */
+.login .walltr-logo {
+  margin-bottom: 0.3em;
+}
+
+
+/* HEADER ---------------- */
+.header {
+  background-color: #262626;
+  color: #f1eee5;
+  overflow: hidden;
+  text-align: center;
+  font-size: 13px;
+  position: relative;
+}
+
+.header > * {
+  display: inline-block;
+  line-height: 50px;
+  height: 50px;
+}
+
+.header .walltr-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 15px;
+}
+
+.header .wall-name {
+  font-weight: 800;
+}
+
+.header .user-details {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 15px;
+}
+
+.header .user-details img {
+  margin-right: 15px;
+}
+
+
+/* NEW POST ---------------- */
+.login,
+.new-post-comment,
+.new-post {
+  font-size: 0;
+}
+
+.login,
+.new-post {
+  width: 430px;
+}
+
+.login input,
+.new-post-comment textarea,
+.new-post-comment input,
+.new-post textarea,
+.new-post input {
+  font-size: 12px;
+}
+
+.login input[type="text"],
+.new-post-comment textarea,
+.new-post textarea {
+  width: 80%;
+}
+
+.login input[type="submit"],
+.new-post-comment input,
+.new-post input {
+  width: 20%;
+}
+
+.new-post:before {
+  content: ' ';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #e8e8de;
+  left: 50%;
+  margin-left: -1.5px;
+  z-index: -1;
+}
+
+
+/* POST ---------------- */
+.post-comment,
+.post-parent {
+  position: relative;
+}
+
+.post-content {
+  background-color: #fff;
+  margin-left: 70px;
+  padding: 20px;
+}
+
+.post-meta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  background-color: #476263;
+  color: #fff;
+}
+
+.post-meta .date {
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.post-meta .date * {
+  display: block;
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.post-meta .date .month,
+.post-meta .date .day {
+  font-weight: bold;
+}
+
+.post-parent .post-content {
+  min-height: 133px;
+}
+
+.new-post-comment,
+.post-comment {
+  margin-left: 70px;
+}
+
+.post-comment {
+  border-top: 1px solid #d8d8d8;
+}
+
+.post-content-meta {
+  color: #767571;
+}
+
+.post-content-meta .user-name {
+  font-weight: 800;
 }
