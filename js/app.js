@@ -17,6 +17,12 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', function
   var walltrRef = new Firebase('https://walltr.firebaseio.com');
   var posts = $firebase(new Firebase('https://walltr.firebaseio.com/posts'));
   $scope.user = false;
+  $scope.users = {
+    1: 'Olof Johansson',
+    2: 'Björn Albertsson',
+    3: 'Linus Bohman',
+    4: 'Adam Gerthel'
+  };
   $scope.posts = [];
 
   var auth = new FirebaseSimpleLogin(walltrRef, function(error, user) {
@@ -25,6 +31,7 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', function
     }
     else if (user) {
       $scope.user = user;
+      $scope.user.name = $scope.users[user.id];
       $location.path('/wall');
     }
     else {
