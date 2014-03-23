@@ -15,14 +15,14 @@
     <div class="post-meta">
       <img class="user-image" src="http://placekitten.com/70/70" alt="{{users[post.user].name}}">
       <p class="date">
-        <span class="month">May</span>
-        <span class="day">06</span>
-        <span class="year">2012</span>
+        <span class="month">{{post.timestamp | date:'MMM'}}</span>
+        <span class="day">{{post.timestamp | date:'dd'}}</span>
+        <span class="year">{{post.timestamp | date:'yyyy'}}</span>
       </p>
     </div>
 
     <div class="post-content legible">
-      <p class="post-content-meta"><span class="user-name">{{users[post.user].name}}</span> 6 minutes ago</p>
+      <p class="post-content-meta"><span class="user-name">{{users[post.user].name}}</span>{{post.timestamp | timeago}}</p>
       <p>{{post.text}}</p>
     </div>
   </div>
@@ -32,7 +32,7 @@
       <img class="user-image" src="http://placekitten.com/g/70/70" alt="{{users[child.user].name}}">
     </div>
     <div class="post-content legible">
-      <p class="post-content-meta"><span class="user-name">{{users[child.user].name}}</span> 6 minutes ago</p>
+      <p class="post-content-meta"><span class="user-name">{{users[child.user].name}}</span>{{child.timestamp | timeago}}</p>
       <p>{{child.text}}</p>
     </div>
   </div>
