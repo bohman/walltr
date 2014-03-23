@@ -13,42 +13,22 @@ walltrApp.config(['$routeProvider', function($routeProvider) {
     otherwise({redirectTo: '/login'});
 }]);
 
-walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', function($location, $scope, $firebase) {
-  var walltrRef = new Firebase('https://walltr.firebaseio.com');
+walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$firebaseSimpleLogin', function($location, $scope, $firebase, $firebaseSimpleLogin) {
+  $scope.auth = $firebaseSimpleLogin(new Firebase('https://walltr.firebaseio.com'));
   var posts = $firebase(new Firebase('https://walltr.firebaseio.com/posts'));
-  $scope.user = false;
   $scope.users = {
-    1: 'Olof Johansson',
-    2: 'Björn Albertsson',
-    3: 'Linus Bohman',
-    4: 'Adam Gerthel'
+    'olof.johansson@me.com': 'Olof Johansson',
+    'bjorn.albertsson@gmail.com': 'Björn Albertsson',
+    'linus@linusbohman.se': 'Linus Bohman',
+    'insats@gmail.com': 'Adam Gerthel'
   };
   $scope.posts = [];
-
-  var auth = new FirebaseSimpleLogin(walltrRef, function(error, user) {
-    if (error) {
-      alert('Such wrong');
-    }
-    else if (user) {
-      $scope.user = user;
-      $scope.user.name = $scope.users[user.id];
-      $location.path('/wall');
-    }
-    else {
-      $scope.user = false;
-      $location.path('/login');
-    }
-  });
-
-  if ($scope.user) {
-    $location.path('/wall');
-  }
 
   $scope.addPost = function(text) {
     var date = new Date();
 
     posts.$add({
-      user: $scope.user.email,
+      user: $scope.auth.user.id,
       timestamp: date.getTime(),
       text: text,
       parent: false
@@ -59,7 +39,7 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', function
     var date = new Date();
 
     posts.$add({
-      user: $scope.user.email,
+      user: $scope.auth.user.id,
       timestamp: date.getTime(),
       text: text,
       parent: post.id
@@ -67,9 +47,13 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', function
   };
 
   $scope.login = function(email, password) {
-    auth.login('password', {
+    $scope.auth.$login('password', {
       email: email,
       password: password
+    }).then(function(user) {
+      $location.path('/wall');
+    }, function(error) {
+      alert('So wrong');
     });
   };
 

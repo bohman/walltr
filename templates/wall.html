@@ -1,7 +1,7 @@
 <div class="header">
   <h1 class="walltr-logo">WallTr</h1>
   <h2 class="wall-name">Walltrs interna, well, wall</h2>
-  <p class="user-details"><img gravatar-src="user.email" gravatar-size="50" class="user-image" alt="{{user.name}}">{{user.name}}</p>
+  <p class="user-details"><img gravatar-src="auth.user.email" gravatar-size="50" class="user-image" alt="{{auth.user.name}}">{{users[auth.user.email]}}</p>
 </div>
 
 <div class="new-post center">
@@ -13,7 +13,7 @@
 
   <div class="post-parent">
     <div class="post-meta">
-      <img gravatar-src="user.email" gravatar-size="70" class="user-image" alt="{{user.name}}">
+      <img gravatar-src="post.user" gravatar-size="70" class="user-image" alt="{{auth.user.name}}">
       <p class="date">
         <span class="month">{{post.timestamp | date:'MMM'}}</span>
         <span class="day">{{post.timestamp | date:'dd'}}</span>
@@ -22,17 +22,17 @@
     </div>
 
     <div class="post-content legible">
-      <p class="post-content-meta"><span class="user-name">{{users[post.user].name}}</span>{{post.timestamp | timeago}}</p>
+      <p class="post-content-meta"><span class="user-name">{{users[post.user]}}</span> {{post.timestamp | timeago}}</p>
       <p>{{post.text}}</p>
     </div>
   </div>
 
   <div class="post-comment" ng-repeat="child in post.children | orderBy:'timestamp'">
     <div class="post-meta">
-      <img gravatar-src="user.email" gravatar-size="70" class="user-image" alt="{{user.name}}">
+      <img gravatar-src="child.user" gravatar-size="70" class="user-image" alt="{{user.name}}">
     </div>
     <div class="post-content legible">
-      <p class="post-content-meta"><span class="user-name">{{users[child.user].name}}</span>{{child.timestamp | timeago}}</p>
+      <p class="post-content-meta"><span class="user-name">{{users[child.user]}}</span> {{child.timestamp | timeago}}</p>
       <p>{{child.text}}</p>
     </div>
   </div>
