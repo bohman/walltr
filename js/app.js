@@ -1,4 +1,4 @@
-var walltrApp = angular.module('walltrApp', ['ngRoute', 'firebase']);
+var walltrApp = angular.module('walltrApp', ['ngRoute', 'firebase', 'ui.gravatar']);
 
 walltrApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.

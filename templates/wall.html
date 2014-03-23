@@ -1,7 +1,7 @@
 <div class="header">
   <h1 class="walltr-logo">WallTr</h1>
   <h2 class="wall-name">Walltrs interna, well, wall</h2>
-  <p class="user-details"><img class="user-image" src="http://placekitten.com/50/50" alt="{{currentUserName}}">{{currentUserName}}</p>
+  <p class="user-details"><img gravatar-src="user.email" gravatar-size="50" class="user-image" alt="{{user.name}}">{{currentUserName}}</p>
 </div>
 
 <div class="new-post center">
@@ -13,7 +13,7 @@
 
   <div class="post-parent">
     <div class="post-meta">
-      <img class="user-image" src="http://placekitten.com/70/70" alt="{{users[post.user].name}}">
+      <img gravatar-src="user.email" gravatar-size="70" class="user-image" alt="{{user.name}}">
       <p class="date">
         <span class="month">{{post.timestamp | date:'MMM'}}</span>
         <span class="day">{{post.timestamp | date:'dd'}}</span>
@@ -29,7 +29,7 @@
 
   <div class="post-comment" ng-repeat="child in post.children | orderBy:'timestamp'">
     <div class="post-meta">
-      <img class="user-image" src="http://placekitten.com/g/70/70" alt="{{users[child.user].name}}">
+      <img gravatar-src="user.email" gravatar-size="70" class="user-image" alt="{{user.name}}">
     </div>
     <div class="post-content legible">
       <p class="post-content-meta"><span class="user-name">{{users[child.user].name}}</span>{{child.timestamp | timeago}}</p>
