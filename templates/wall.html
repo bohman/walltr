@@ -23,7 +23,7 @@
 
     <div class="post-content legible">
       <p class="post-content-meta"><span class="user-name">{{users[post.user]}}</span> {{post.timestamp | timeago}}</p>
-      <p>{{post.text}}</p>
+      <p ng-bind-html="post.text | newlines"></p>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
     </div>
     <div class="post-content legible">
       <p class="post-content-meta"><span class="user-name">{{users[child.user]}}</span> {{child.timestamp | timeago}}</p>
-      <p>{{child.text}}</p>
+      <p ng-bind-html="child.text | newlines"></p>
     </div>
   </div>
 

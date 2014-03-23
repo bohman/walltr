@@ -1,4 +1,4 @@
-var walltrApp = angular.module('walltrApp', ['ngRoute', 'firebase', 'ui.gravatar']);
+var walltrApp = angular.module('walltrApp', ['ngRoute', 'firebase', 'ui.gravatar', 'ngSanitize']);
 
 walltrApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -114,3 +114,9 @@ walltrApp.filter('timeago', function(){
     return moment(date).fromNow();
   };
 });
+
+walltrApp.filter('newlines', function () {
+  return function(text) {
+    return text.replace(/\n/g, '<br />');
+  }
+})
