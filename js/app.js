@@ -84,6 +84,29 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
     }
   });
 
+  posts.$on('child_removed', function(snapshot) {
+    var removedPost = snapshot.snapshot.value;
+
+    if (!removedPost.parent) {
+      angular.forEach($scope.posts, function(post, key) {
+        if (post.id == snapshot.snapshot.name) {
+          $scope.posts.splice(key, 1);
+        }
+      });
+    }
+    else {
+      angular.forEach($scope.posts, function(post, key) {
+        if (post.id == removedPost.parent) {
+          angular.forEach(post.children, function(child, key) {
+            if (child.id == snapshot.snapshot.name) {
+              post.children.splice(key, 1);
+            }
+          });
+        }
+      });
+    }
+  });
+
 }]);
 
 walltrApp.filter('timeago', function(){
