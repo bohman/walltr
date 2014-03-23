@@ -27,13 +27,13 @@
     </div>
   </div>
 
-  <div class="post-comment" ng-repeat="comment in post.comments">
+  <div class="post-comment" ng-repeat="child in post.children | orderBy:'timestamp'">
     <div class="post-meta">
-      <img class="user-image" src="http://placekitten.com/g/70/70" alt="{{users[post.user].name}}">
+      <img class="user-image" src="http://placekitten.com/g/70/70" alt="{{users[child.user].name}}">
     </div>
     <div class="post-content legible">
-      <p class="post-content-meta"><span class="user-name">{{users[comment.user].name}}</span> 6 minutes ago</p>
-      <p>{{comment.text}}</p>
+      <p class="post-content-meta"><span class="user-name">{{users[child.user].name}}</span> 6 minutes ago</p>
+      <p>{{child.text}}</p>
     </div>
   </div>
 
