@@ -28,7 +28,7 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
     var date = new Date();
 
     posts.$add({
-      user: $scope.auth.user.id,
+      user: $scope.auth.user.email,
       timestamp: date.getTime(),
       text: text,
       parent: false
@@ -39,7 +39,7 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
     var date = new Date();
 
     posts.$add({
-      user: $scope.auth.user.id,
+      user: $scope.auth.user.email,
       timestamp: date.getTime(),
       text: text,
       parent: post.id
