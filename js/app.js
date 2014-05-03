@@ -62,6 +62,11 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
       $scope.newWall = '';
     }
 
+    $scope.changeWall = function(wall) {
+      $scope.currentWall = wall;
+      $scope.showWalls = false;
+    };
+
     walls.$on('loaded', function() {
       angular.forEach(walls, function(value, key) {
         if (typeof value == 'string' && key != '$id') {
@@ -100,6 +105,13 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
           $scope.walls.splice(key, 1);
         }
       });
+
+      if (snapshot.snapshot.name == $scope.currentWall.id && $scope.walls[0]) {
+        $scope.currentWall = {
+          id: $scope.walls[0].id,
+          name: $scope.walls[0].name
+        };
+      }
     });
 
     $scope.addPost = function(text) {
@@ -112,7 +124,8 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
         user: $scope.auth.user.email,
         timestamp: date.getTime(),
         text: text,
-        parent: false
+        parent: false,
+        wall: $scope.currentWall.id
       });
 
       $scope.text = '';
@@ -146,7 +159,8 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
               user: post.user,
               timestamp: post.timestamp,
               text: post.text,
-              children: []
+              children: [],
+              wall: post.wall
             });
           }
           else {
@@ -175,7 +189,8 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
           user: post.user,
           timestamp: post.timestamp,
           text: post.text,
-          children: []
+          children: [],
+          wall: post.wall
         });
       }
       else {
