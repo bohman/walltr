@@ -51,6 +51,9 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
     $scope.posts = [];
 
     $scope.addPost = function(text) {
+      if (!text) {
+        return;
+      }
       var date = new Date();
 
       posts.$add({
@@ -64,6 +67,9 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
     };
 
     $scope.addComment = function(post, comment) {
+      if (!comment) {
+        return;
+      }
       var date = new Date();
 
       posts.$add({
