@@ -41,14 +41,66 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
   });
 
   $rootScope.$on('$firebaseSimpleLogin:login', function(error, user) {
+    var walls = $firebase(new Firebase('https://walltr.firebaseio.com/walls'));
     var posts = $firebase(new Firebase('https://walltr.firebaseio.com/posts'));
+    $scope.posts = [];
+    $scope.walls = [];
+    $scope.currentWall = false;
     $scope.users = {
       'olof.johansson@me.com': 'Olof Johansson',
       'bjorn.albertsson@gmail.com': 'Björn Albertsson',
       'linus@linusbohman.se': 'Linus Bohman',
       'insats@gmail.com': 'Adam Gerthel'
     };
-    $scope.posts = [];
+
+    $scope.addWall = function(name) {
+      if (!name) {
+        return;
+      }
+
+      walls.$add(name);
+      $scope.newWall = '';
+    }
+
+    walls.$on('loaded', function() {
+      angular.forEach(walls, function(value, key) {
+        if (typeof value == 'string' && key != '$id') {
+          $scope.walls.push({
+            id: key,
+            name: value
+          });
+        }
+      });
+
+      if ($scope.walls[0]) {
+        $scope.currentWall = {
+          id: $scope.walls[0].id,
+          name: $scope.walls[0].name
+        };
+      }
+    });
+
+    walls.$on('child_added', function(snapshot) {
+      $scope.walls.push({
+        id: snapshot.snapshot.name,
+        name: snapshot.snapshot.value
+      });
+
+      if (!$scope.currentWall) {
+        $scope.currentWall = {
+          id: snapshot.snapshot.name,
+          name: snapshot.snapshot.value
+        };
+      }
+    });
+
+    walls.$on('child_removed', function(snapshot) {
+      angular.forEach($scope.walls, function(value, key) {
+        if (value.id == snapshot.snapshot.name) {
+          $scope.walls.splice(key, 1);
+        }
+      });
+    });
 
     $scope.addPost = function(text) {
       if (!text) {
@@ -164,6 +216,16 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
       }
     });
   });
+
+  $scope.showWalls = false;
+  $scope.toggleWalls = function() {
+    if ($scope.showWalls) {
+      $scope.showWalls = false;
+    }
+    else {
+      $scope.showWalls = true;
+    }
+  };
 
 }]);
 

@@ -1,6 +1,17 @@
 <div class="header">
   <h1 class="walltr-logo">WallTr</h1>
-  <h2 class="wall-name">Walltrs interna, well, wall</h2>
+  <h2 class="wall-name" ng-click="toggleWalls()">{{currentWall.name}}</h2>
+
+  <div class="available-walls" ng-show="showWalls">
+    <ul>
+      <li ng-repeat="wall in walls | orderBy:'name'">{{wall.name}}</li>
+    </ul>
+    <div class="new-wall center">
+      <textarea rows="1" placeholder="New wall" id="new-wall" ng-model="newWall"></textarea>
+      <input type="submit" value="Create" ng-click="addWall(newWall)">
+    </div>
+  </div>
+
   <p class="user-details"><img gravatar-src="auth.user.email" gravatar-size="50" class="user-image" alt="{{auth.user.name}}">{{users[auth.user.email]}}</p>
 </div>
 
