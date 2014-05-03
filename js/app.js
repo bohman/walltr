@@ -59,17 +59,21 @@ walltrApp.controller('WalltrCtrl', ['$location', '$scope', '$firebase', '$fireba
         text: text,
         parent: false
       });
+
+      $scope.text = '';
     };
 
-    $scope.addComment = function(post, text) {
+    $scope.addComment = function(post, comment) {
       var date = new Date();
 
       posts.$add({
         user: $scope.auth.user.email,
         timestamp: date.getTime(),
-        text: text,
+        text: comment,
         parent: post.id
       });
+
+      post.newComment = '';
     };
 
     posts.$on('loaded', function() {

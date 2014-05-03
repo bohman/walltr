@@ -38,7 +38,7 @@
   </div>
 
   <div class="new-post-comment">
-    <textarea rows="1" ng-model="comment"></textarea>
-    <input type="submit" value="Comment" ng-click="addComment(post, comment)">
+    <textarea rows="1" ng-model="post.newComment"></textarea>
+    <input type="submit" value="Comment" ng-click="addComment(post, post.newComment)">
   </div>
 </div>
